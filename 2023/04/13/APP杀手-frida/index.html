@@ -16,21 +16,21 @@
   <meta name="author" content="Cha111Ng1">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="https://gitlxl.github.io/2023/04/11/test/index.html">
+    <meta name="description" content="APP克星系列安卓「服务端-手机」frida使用环境配置（一）0817下载 12# 选择合适的版本下载https:&#x2F;&#x2F;github.com&#x2F;frida&#x2F;frida&#x2F;releases   如何知道合适的版本 12# 查看安卓机芯片架构adb shell getprop ro.product.cpu.abi  安装（？？？adb命令拓展）： 12# 把frida-server 放到 安卓的&#x2F;data&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="APP杀手-frida">
+<meta property="og:url" content="https://gitlxl.github.io/2023/04/13/APP%E6%9D%80%E6%89%8B-frida/index.html">
 <meta property="og:site_name" content="Cha111Ng1&#39;s Blog">
+<meta property="og:description" content="APP克星系列安卓「服务端-手机」frida使用环境配置（一）0817下载 12# 选择合适的版本下载https:&#x2F;&#x2F;github.com&#x2F;frida&#x2F;frida&#x2F;releases   如何知道合适的版本 12# 查看安卓机芯片架构adb shell getprop ro.product.cpu.abi  安装（？？？adb命令拓展）： 12# 把frida-server 放到 安卓的&#x2F;data&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitlxl.github.io/2023/04/11/test/image-20230413215811017.png">
-<meta property="article:published_time" content="2023-04-11T15:06:45.000Z">
-<meta property="article:modified_time" content="2023-04-13T13:58:28.252Z">
+<meta property="article:published_time" content="2023-04-13T14:02:44.000Z">
+<meta property="article:modified_time" content="2023-04-13T14:14:23.717Z">
 <meta property="article:author" content="Cha111Ng1">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitlxl.github.io/2023/04/11/test/image-20230413215811017.png">
   
   
   
-  <title>test - Cha111Ng1&#39;s Blog</title>
+  <title>APP杀手-frida - Cha111Ng1&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="test"></span>
+            <span id="subtitle" data-typed-text="APP杀手-frida"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-11 23:06" pubdate>
-          2023年4月11日 晚上
+        <time datetime="2023-04-13 22:02" pubdate>
+          2023年4月13日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          897 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -268,12 +268,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">test</h1>
+            <h1 style="display: none">APP杀手-frida</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="/2023/04/11/test/image-20230413215811017.png" srcset="/img/loading.gif" lazyload alt="image-20230413215811017"></p>
+                <h1 id="APP克星系列"><a href="#APP克星系列" class="headerlink" title="APP克星系列"></a>APP克星系列</h1><h2 id="安卓「服务端-手机」frida使用环境配置（一）0817"><a href="#安卓「服务端-手机」frida使用环境配置（一）0817" class="headerlink" title="安卓「服务端-手机」frida使用环境配置（一）0817"></a>安卓「服务端-手机」frida使用环境配置（一）0817</h2><p>下载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">选择合适的版本下载</span><br>https://github.com/frida/frida/releases<br></code></pre></td></tr></table></figure>
+
+<p> 如何知道合适的版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看安卓机芯片架构</span><br>adb shell getprop ro.product.cpu.abi<br></code></pre></td></tr></table></figure>
+
+<p>安装（？？？adb命令拓展）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">把frida-server 放到 安卓的/data/local/tmp/目录</span><br>adb push frida-server /data/local/tmp/<br></code></pre></td></tr></table></figure>
+
+<p>安卓端启动frida服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">进入超级权限</span><br>su<br><span class="hljs-meta prompt_"># </span><span class="language-bash">给予可执行权限</span><br>chmod +x /data/local/tmp/frida-server<br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动frida服务端</span><br>/data/local/tmp/frida-server<br></code></pre></td></tr></table></figure>
+
+<p>实验demo</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"># hello-frida.<span class="hljs-property">js</span><br><br><span class="hljs-built_in">setTimeout</span>(<br>	<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>		<span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>			<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;hello frida!&quot;</span>)<br>		&#125;)<br>	&#125;<br>)<br></code></pre></td></tr></table></figure>
+
+<p>测试demo，使用命令执行进行hook操作</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs awk">➜  z frida -U -l hello-frida.js 师傅端<br>     ____<br>    / _  |   Frida <span class="hljs-number">15.1</span>.<span class="hljs-number">28</span> - A world-class dynamic instrumentation toolkit<br>   | (_| |<br>    &gt; _  |   Commands:<br>   <span class="hljs-regexp">/_/</span> |_|       help      -&gt; Displays the help system<br>   . . . .       object?   -&gt; Display information about <span class="hljs-string">&#x27;object&#x27;</span><br>   . . . .       <span class="hljs-keyword">exit</span>/quit -&gt; Exit<br>   . . . .<br>   . . . .   More info at https:<span class="hljs-regexp">//</span>frida.re<span class="hljs-regexp">/docs/</span>home/<br>   . . . .<br>   . . . .   Connected to Android Emulator <span class="hljs-number">5554</span> (id=emulator-<span class="hljs-number">5554</span>)<br>Attaching...                                                            <br>hello frida!<br>[Android Emulator <span class="hljs-number">5554</span>::师傅端 ]-&gt;<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -291,8 +308,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>test</div>
-      <div>https://gitlxl.github.io/2023/04/11/test/</div>
+      <div>APP杀手-frida</div>
+      <div>https://gitlxl.github.io/2023/04/13/APP杀手-frida/</div>
     </div>
     <div class="license-meta">
       
@@ -304,7 +321,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年4月11日</div>
+          <div>2023年4月13日</div>
         </div>
       
       
@@ -336,15 +353,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/11/I-am-Cha111Ng1/" title="I am Cha111Ng1">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">I am Cha111Ng1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/04/11/I-am-Cha111Ng1/" title="I am Cha111Ng1">
+                        <span class="hidden-mobile">I am Cha111Ng1</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

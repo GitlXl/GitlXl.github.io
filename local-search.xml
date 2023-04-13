@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>文章</title>
-    <link href="/2023/04/12/%E6%96%87%E7%AB%A0/"/>
-    <url>/2023/04/12/%E6%96%87%E7%AB%A0/</url>
+    <title>APP杀手-frida</title>
+    <link href="/2023/04/13/APP%E6%9D%80%E6%89%8B-frida/"/>
+    <url>/2023/04/13/APP%E6%9D%80%E6%89%8B-frida/</url>
     
-    <content type="html"><![CDATA[<p>test</p><p><img src="/2023/04/12/%E6%96%87%E7%AB%A0/image-20230413214926467.png" alt="image-20230413214926467"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="APP克星系列"><a href="#APP克星系列" class="headerlink" title="APP克星系列"></a>APP克星系列</h1><h2 id="安卓「服务端-手机」frida使用环境配置（一）0817"><a href="#安卓「服务端-手机」frida使用环境配置（一）0817" class="headerlink" title="安卓「服务端-手机」frida使用环境配置（一）0817"></a>安卓「服务端-手机」frida使用环境配置（一）0817</h2><p>下载</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">选择合适的版本下载</span><br>https://github.com/frida/frida/releases<br></code></pre></td></tr></table></figure><p> 如何知道合适的版本</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看安卓机芯片架构</span><br>adb shell getprop ro.product.cpu.abi<br></code></pre></td></tr></table></figure><p>安装（？？？adb命令拓展）：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">把frida-server 放到 安卓的/data/local/tmp/目录</span><br>adb push frida-server /data/local/tmp/<br></code></pre></td></tr></table></figure><p>安卓端启动frida服务</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">进入超级权限</span><br>su<br><span class="hljs-meta prompt_"># </span><span class="language-bash">给予可执行权限</span><br>chmod +x /data/local/tmp/frida-server<br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动frida服务端</span><br>/data/local/tmp/frida-server<br></code></pre></td></tr></table></figure><p>实验demo</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"># hello-frida.<span class="hljs-property">js</span><br><br><span class="hljs-built_in">setTimeout</span>(<br><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br><span class="hljs-title class_">Java</span>.<span class="hljs-title function_">perform</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;hello frida!&quot;</span>)<br>&#125;)<br>&#125;<br>)<br></code></pre></td></tr></table></figure><p>测试demo，使用命令执行进行hook操作</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs awk">➜  z frida -U -l hello-frida.js 师傅端<br>     ____<br>    / _  |   Frida <span class="hljs-number">15.1</span>.<span class="hljs-number">28</span> - A world-class dynamic instrumentation toolkit<br>   | (_| |<br>    &gt; _  |   Commands:<br>   <span class="hljs-regexp">/_/</span> |_|       help      -&gt; Displays the help system<br>   . . . .       object?   -&gt; Display information about <span class="hljs-string">&#x27;object&#x27;</span><br>   . . . .       <span class="hljs-keyword">exit</span>/quit -&gt; Exit<br>   . . . .<br>   . . . .   More info at https:<span class="hljs-regexp">//</span>frida.re<span class="hljs-regexp">/docs/</span>home/<br>   . . . .<br>   . . . .   Connected to Android Emulator <span class="hljs-number">5554</span> (id=emulator-<span class="hljs-number">5554</span>)<br>Attaching...                                                            <br>hello frida!<br>[Android Emulator <span class="hljs-number">5554</span>::师傅端 ]-&gt;<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
@@ -22,19 +22,6 @@
     <url>/2023/04/11/I-am-Cha111Ng1/</url>
     
     <content type="html"><![CDATA[<p><img src="/2023/04/11/I-am-Cha111Ng1/image-20230412223013886.png" alt="image-20230412223013886"></p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>test</title>
-    <link href="/2023/04/11/test/"/>
-    <url>/2023/04/11/test/</url>
-    
-    <content type="html"><![CDATA[<p><img src="/2023/04/11/test/image-20230413215811017.png" alt="image-20230413215811017"></p>]]></content>
     
     
     
